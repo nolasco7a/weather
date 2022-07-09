@@ -1,38 +1,127 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+.app{
+  background: url('./assets/images/background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.weather-container{
+  aspect-ratio: 9/16;
+  max-width: 250px;
+  min-width: 249px;
+  background: rgba(255, 255, 255);
+  border-radius: 8px;
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.3);
+  padding: 5px;
+  position: relative;
+}
+
+.search > input{
+  width: 75%;
+  margin-left: 5%;
+  padding: 20px 5px 5px 5px;
+  border: none;
+  border-bottom: 1px solid grey
+}
+.search > input:active, .search > input:focus{
+  border: none;
+  border-bottom: 1px solid rgb(35, 38, 143);
+  outline: none;
+}
+
+.toggle{
+  position: absolute;
+  top: 5%;
+  right: 2%;
+}
+
+.toggle>button{
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: grey;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+.toggle>button:hover{
+  color: rgb(14, 71, 120);
+  transition: all 0.3s ease;
+}
+.city{
+  width: 80%;
+  margin-left: 10%;
+  padding-top: 20px;
+}
+.city > small{
+  margin: 0;
+  padding: 0;
+  font-size: .7rem;
+  font-weight: 500;
+}
+.city>h1{
+  margin: 0;
+  padding: 0;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #424242;
+}
+
+.weather-icon{
+  width: 40%;
+  margin-left: 30%;
+}
+.weather-icon > img{
+  margin-top: 10px;
+  width: 100%;
+  transform: scale(1.2);
+}
+
+.temp{
+  width: 50%;
+  margin-left: 25%;
+}
+.temp > h1{
+  margin: 0;
+  padding: 0;
+  font-size: 4.6rem;
+  font-weight: 400;
+  color: #424242;
+  font-family: 'Oswald', sans-serif;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.feelslike{
+  width: 80%;
+  margin-left: 10%;
+  padding-top: 20px;
+  color: #424242;
+}
+.feelslike > p{
+  font-weight: 500;
+  margin-bottom: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.feelslike > small{
+  font-weight: 500;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.error{
+  height: 90%;
+  width: 80%;
+  margin-left: 10%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.error > h1{
+  font-size: 2rem;
+  font-weight: 800;
+  color: #424242;
+  margin-top: 10px;
 }
