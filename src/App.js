@@ -2,36 +2,6 @@ import React,{useEffect, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-/* const Weather = (weather) =>{
-  const weather = weather.weather;
-  return(
-    <div className='weather-content'>
-      <div className="city">
-        <small>{weather.location.country}</small>
-        <h1>{weather.location.name}</h1>
-      </div>
-      <div className='weather-icon'>
-        <img src={`https:${weather.current.condition.icon}`} alt="weather-icon" srcset="" />
-      </div>
-      <div className='temp'>
-        <h1>{weather.current.temp_c}°</h1>
-      </div>
-      <div className="feelslike">
-        so, it's {weather.current.condition.text}
-        <small>feels like {weather.current.feelslike_c}°</small>
-      </div>
-    </div>
-  )
-} */
-
-const ErrorWeather = (error) =>{
-  return(
-    <div className='error'>
-      <h1>{error.message}</h1>
-    </div>
-  )
-}
-
 const App = () => {
   const [city, setCity] = useState('chicago');
   const [weather, setWeather] = useState('');
@@ -40,7 +10,7 @@ const App = () => {
 
   useEffect(() =>{
     setLoading(true);
-    
+
     const options = {
     method: 'GET',
     headers: {
