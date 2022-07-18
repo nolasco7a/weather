@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from 'react';
-import logo from './logo.svg';
+import {getCurrentWeather} from './services/getCurrentWeather';
 import './App.css';
 
 const App = () => {
@@ -9,21 +9,15 @@ const App = () => {
   const [celcius, setCelcius] = useState(true);
 
   useEffect(() =>{
-    setLoading(true);
-
-    const options = {
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': '0c5a653e7amsh6818b63cdc77548p136de0jsne7f5e12b54a4',
-      'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
-    }
-  };
-
-    fetch(`https://weatherapi-com.p.rapidapi.com/current.json?q=${city}`, options)
-      .then(response => response.json())
-      .then(response => setWeather(response), setLoading(false))
-      .catch(err =>
-         console.log(err));
+    Promise.all([
+      getCurrentWeather({city})
+    ]).then(response =>{
+      setWeather(response[0])
+    }).catch(error =>{
+      new Error(error)
+    }).finally(()=>{
+      setLoading(false)
+    })
   }, [city])
 
   const selectCity = (e) => {
@@ -31,6 +25,7 @@ const App = () => {
       setCity(e.target.value);
     }
   }
+
   if (loading) {
     return <div>Loading...</div>
   }
@@ -48,10 +43,10 @@ const App = () => {
             <h1>{weather.error.message}</h1>
           </div>
         }
-        {!weather.error &&
+        {weather.location &&
           <div className='weather-content'>
             <div className="city">
-              <small>{weather.location.region}</small>
+              <small>{weather.location.region ? weather.location.region : null}</small>
               <h1>{weather.location.name}</h1>
             </div>
             <div className='weather-icon'>
